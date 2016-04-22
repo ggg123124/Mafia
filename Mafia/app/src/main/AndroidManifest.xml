@@ -15,12 +15,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="Bmob_APP_KEY"
+            android:value="756084a9d31d8278ff55da32d05b929f"/>
+        <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver" >
+            <intent-filter>
+                <action android:name="cn.bmob.action.RECONNECT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="cn.bmob.newim.core.service.BmobImService"
+            android:process=":bmobcore" />
+        <service android:name="cn.bmob.newim.core.service.ReConnectService" />
+        <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
     </application>
+    <!--网络权限-->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--网络变化监听-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!--WIFI权限-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--读取设备信息-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--sd卡读写权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--获取图标-->
     <uses-permission android:name="android.permission.READ_LOGS"/>
+    <!--设备休眠-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--摄像头-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--录音-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--通知震动-->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>
