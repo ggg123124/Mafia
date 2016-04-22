@@ -6,17 +6,29 @@ import cn.bmob.v3.BmobObject;
  * Created by 超级有节操的逆袭 on 2016/4/19.
  */
 public class Gamer extends BmobObject{
+    //是否是活人
     private Boolean Alive;
+    //是否夜间无敌
     private Boolean Resistance;
+    //是否被放置过陷阱
     private Boolean Mine;
+    //是否侦察免疫
     private Boolean  Immunization;
+    //是否被限制
     private Boolean limit;
+    //遗嘱
     private String Will;
+    //玩家设置的名字
     private String GamerName;
+    //阵营（警长调查信息）
     private String Camp;
+    //角色类型
     private String Type;
+    //探员调查信息
     private String Information;
+    //楼层
     private Integer Number;
+    //是否被泼油
     private Boolean Inflammable;
 
 
