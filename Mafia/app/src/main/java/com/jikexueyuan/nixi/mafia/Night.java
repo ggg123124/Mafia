@@ -7,8 +7,23 @@ import cn.bmob.v3.BmobObject;
  */
 public class Night extends BmobObject{
     //访问目标
-    private Integer interviewed;
+    private Integer interviewed[];
     //被哪些人访问过
     private Integer accessed[];
 
+    public Integer[] getAccessed() {
+        return accessed;
+    }
+
+    public Integer[] getInterviewed() {
+        return interviewed;
+    }
+
+    public void setAccessed(Integer[] accessed) {
+        this.accessed = accessed;
+    }
+
+    public void setInterviewed(Integer[] interviewed) {
+        this.interviewed = interviewed;
+    }
 }

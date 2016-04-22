@@ -14,20 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bmob.initialize(this, "756084a9d31d8278ff55da32d05b929f");
-        Gamer gamer = new Gamer();
-        gamer.setAlive(true);
-        gamer.save(MainActivity.this, new SaveListener() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(MainActivity.this,"成功",Toast .LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                Toast.makeText(MainActivity.this,"失败",Toast .LENGTH_SHORT).show();
-            }
-        });
 
     }
 }

@@ -30,11 +30,17 @@ public class Gamer extends BmobObject{
     private Integer Number;
     //是否被泼油
     private Boolean Inflammable;
+    //在开局的时候给云数据库一个随机数，通过排序来决定谁是主机
+    private Integer Roll;
 
 
 
     public Boolean getAlive() {
         return Alive;
+    }
+
+    public Integer getRoll() {
+        return Roll;
     }
 
     public Boolean getInflammable() {
@@ -92,6 +98,10 @@ public class Gamer extends BmobObject{
 
     public void setMine(Boolean mine) {
         Mine = mine;
+    }
+
+    public void setRoll(Integer roll) {
+        Roll = roll;
     }
 
     public void setCamp(String camp) {
