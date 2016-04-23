@@ -132,6 +132,7 @@ public class Skill extends BmobObject{
     }
 
     //老司机开车咯
+    //在老司机开车指令需要执行两次
     public void bus(Context context,Integer number1,Integer number2){
         getObjectId(number1,context);
         box = number1;
@@ -243,7 +244,7 @@ public class Skill extends BmobObject{
         query.findObjects(context, new FindListener<Gamer>() {
             @Override
             public void onSuccess(List<Gamer> list) {
-                for(Gamer gamer : list){
+                for (Gamer gamer : list) {
                     gamer.getObjectId();
 
                     gamer.setAlive(false);
@@ -259,6 +260,55 @@ public class Skill extends BmobObject{
                         }
                     });
 
+                }
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+    }
+
+    //保护
+    //// TODO: 2016/4/23 未完成 
+    public void bodyguard(final Context context,Integer number){
+        getObjectId(number, context);
+        Gamer gamer = new Gamer();
+        gamer.setResistance(true);
+        gamer.update(context, _objectId, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                Log.i("bmob", "更新成功");
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Log.i("bmob", "更新失败：" + s);
+            }
+        });
+        BmobQuery<Gamer> query = new BmobQuery<Gamer>();
+        query.addWhereEqualTo("interviewed",number);
+        query.addWhereEqualTo("Information","有枪");
+        query.setLimit(50);
+        query.findObjects(context, new FindListener<Gamer>(){
+            @Override
+            public void onSuccess(List<Gamer> list) {
+                for (Gamer gamer1 : list){
+                    getObjectId(gamer1.getNumber(),context);
+                    Gamer gamer = new Gamer();
+                    gamer.setAlive(false);
+                    gamer.update(context, _objectId, new UpdateListener() {
+                        @Override
+                        public void onSuccess() {
+                            Log.i("bmob", "更新成功");
+                        }
+
+                        @Override
+                        public void onFailure(int i, String s) {
+                            Log.i("bmob", "更新失败：" + s);
+                        }
+                    });
                 }
             }
 
