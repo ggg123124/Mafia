@@ -272,52 +272,53 @@ public class Skill extends BmobObject{
 
     //保护
     //// TODO: 2016/4/23 未完成 
-    public void bodyguard(final Context context,Integer number){
-        getObjectId(number, context);
-        Gamer gamer = new Gamer();
-        gamer.setResistance(true);
-        gamer.update(context, _objectId, new UpdateListener() {
-            @Override
-            public void onSuccess() {
-                Log.i("bmob", "更新成功");
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                Log.i("bmob", "更新失败：" + s);
-            }
-        });
-        BmobQuery<Gamer> query = new BmobQuery<Gamer>();
-        query.addWhereEqualTo("interviewed",number);
-        query.addWhereEqualTo("Information","有枪");
-        query.setLimit(50);
-        query.findObjects(context, new FindListener<Gamer>(){
-            @Override
-            public void onSuccess(List<Gamer> list) {
-                for (Gamer gamer1 : list){
-                    getObjectId(gamer1.getNumber(),context);
-                    Gamer gamer = new Gamer();
-                    gamer.setAlive(false);
-                    gamer.update(context, _objectId, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            Log.i("bmob", "更新成功");
-                        }
-
-                        @Override
-                        public void onFailure(int i, String s) {
-                            Log.i("bmob", "更新失败：" + s);
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onError(int i, String s) {
-
-            }
-        });
-    }
+    //// TODO: 2016/4/24 这段逻辑有严重问题，不可使用，可能需要大改或删除 
+//    public void bodyguard(final Context context,Integer number){
+//        getObjectId(number, context);
+//        Gamer gamer = new Gamer();
+//        gamer.setResistance(true);
+//        gamer.update(context, _objectId, new UpdateListener() {
+//            @Override
+//            public void onSuccess() {
+//                Log.i("bmob", "更新成功");
+//            }
+//
+//            @Override
+//            public void onFailure(int i, String s) {
+//                Log.i("bmob", "更新失败：" + s);
+//            }
+//        });
+//        BmobQuery<Gamer> query = new BmobQuery<Gamer>();
+//        query.addWhereEqualTo("interviewed",number);
+//        query.addWhereEqualTo("Information","有枪");
+//        query.setLimit(50);
+//        query.findObjects(context, new FindListener<Gamer>(){
+//            @Override
+//            public void onSuccess(List<Gamer> list) {
+//                for (Gamer gamer1 : list){
+//                    getObjectId(gamer1.getNumber(),context);
+//                    Gamer gamer = new Gamer();
+//                    gamer.setAlive(false);
+//                    gamer.update(context, _objectId, new UpdateListener() {
+//                        @Override
+//                        public void onSuccess() {
+//                            Log.i("bmob", "更新成功");
+//                        }
+//
+//                        @Override
+//                        public void onFailure(int i, String s) {
+//                            Log.i("bmob", "更新失败：" + s);
+//                        }
+//                    });
+//                }
+//            }
+//
+//            @Override
+//            public void onError(int i, String s) {
+//
+//            }
+//        });
+//    }
 
 
 }
